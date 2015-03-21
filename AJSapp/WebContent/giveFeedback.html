@@ -1,0 +1,38 @@
+<div>
+	<h1>Give feedback</h1>
+
+	<table class="table table-hover table-striped">
+		<thead>
+			<tr>
+				<td style="width: 300px;"></td>
+				<td class="headerRow" ng-repeat="x in ratingOptions">{{x.value}}</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="x in MCQs">
+				<td>{{x.ques}}</td>
+				<td><input class="radioBtnColumn" type="radio" ng-change="{{MCQA1}} = 5" id="'MCQ+{{x.index}}'+'A1'"
+					name="{{x.index}}" ng-value="5"  ></td>
+				<td><input class="radioBtnColumn" type="radio" ng-change="{{MCQA1}} = 5" id="'MCQ+{{x.index}}'+'A2'"
+				 	name="{{x.index}}" ng-value="4"  ></td>
+				<td><input class="radioBtnColumn" type="radio" ng-change="MCQA1 = 5" id="'MCQ+{{x.index}}'+'A3'"
+					name="{{x.index}}" ng-value="3"  ></td>
+				<td><input class="radioBtnColumn" type="radio" ng-change="MCQA1 = 5" id="'MCQ+{{x.index}}'+'A4'"
+					name="{{x.index}}" ng-value="2"  ></td>
+				<td><input class="radioBtnColumn" type="radio"  ng-change="MCQA1 = 5" id="'MCQ+{{x.index}}'+'A5'"
+					name="{{x.index}}" ng-value="1"  ></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div  ng-repeat="x in Questions">
+		<br><span >{{x.Ques}}</span>
+		<div  ng-repeat="y in x.answers">
+			<input type="radio" name="{{x.no}}"> <span>{{y.answer}} 
+			</span><br>
+		</div>
+	</div>
+	<textarea class="form-control" rows="3" ></textarea>
+	<br>  <button type="submit"  class="btn btn-default">Submit</button>
+    value: {{MCQA1}}
+</div>
