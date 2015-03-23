@@ -12,17 +12,15 @@
 					<td >{{x.key}}</td>
 					<td id="{{x.key}}"  >
 <!--   			 	    <td id="{{x.key}}"  ng-repeat="y in ((a = Array(x.value))&&a) track by $index"> -->
-						<span ng-repeat="a in (((b=[]).length=x.value)&&b) track by $index" class="glyphicon glyphicon-star"></span>
-<!-- 					<div star-rating rating-value="{{x.value}}" max="5" ></div> -->
-<!-- 					<rating ng-model="rate" max="5" readonly="isReadonly" >{{rate}}</rating> -->
-<!-- 					<div class="rating">  {{x.value}}/5</div> -->
+<!-- 						<span ng-repeat="a in (((b=[]).length=x.value)&&b) track by $index" class="glyphicon glyphicon-star"></span> -->
+					<rating ng-model="x.value"  ng-max="max" readonly ="true"  ></rating>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+		 
 		<h1 ng-repeat="x in feedback | filter: 'Overall'" >
-			{{x.value}}
+		Overall Rating:  <rating ng-model="x.value"  ng-max="max" readonly ="true"  ></rating>
 		</h1>
 		<h3>
 			<a id="loginLink" onclick="openLoginPopup()">Login</a> to submit you

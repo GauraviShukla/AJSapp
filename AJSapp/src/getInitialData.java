@@ -46,7 +46,7 @@ public class getInitialData extends HttpServlet {
 	    	   Class.forName(JDBC_DRIVER);
 	    	   Connection conn = DriverManager.getConnection(DB_URL,USER, PASS);
 	    	   Statement stmt = conn.createStatement();
-	    	   String query = "Select Avg(Navigate), Avg(Content), Avg(Professional), AVG(Information), Avg(EaseOfInfo), ROUND( AVG(Overall),2) from feedbackdata; ";
+	    	   String query = "Select ROUND( Avg(Navigate)), ROUND( Avg(Content)), ROUND( Avg(Professional)), ROUND( AVG(Information)), ROUND( Avg(EaseOfInfo)), ROUND( AVG(Overall)) from feedbackdata; ";
 	    	   ResultSet rs = stmt.executeQuery(query);
 	    	   if(rs.next()){
 	    		   JSONObject arrayObject1 = new JSONObject();

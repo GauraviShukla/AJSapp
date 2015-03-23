@@ -11,14 +11,9 @@
 			 }
 			 $scope.feedback = response;
 			  
-			  $scope.rate = 7;
-			  $scope.max = 10;
+			  $scope.max = 5;
 			  $scope.isReadonly = false;
 
-			  $scope.hoveringOver = function(value) {
-			    $scope.overStar = value;
-			    $scope.percent = 100 * (value / $scope.max);
-			  };
 
 			  $scope.ratingStates = [
 			    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
@@ -27,13 +22,13 @@
 			    {stateOn: 'glyphicon-heart'},
 			    {stateOff: 'glyphicon-off'}
 			  ];
-//			 $scope.overallrating = function(){
-//				 var sum = 0;
-//				 for( var i=0; i< $scope.feedback.length; i++){
-//					 sum = sum + parseInt($scope.feedback[i].value);
-//				 }
-//				 return sum/($scope.feedback.length) ;
-//			 }
+			 $scope.overallrating = function(){
+				 var sum = 0;
+				 for( var i=0; i< $scope.feedback.length; i++){
+					 sum = sum + parseInt($scope.feedback[i].value);
+				 }
+				 return sum/($scope.feedback.length) ;
+			 }
 	 });
 	 $scope.ratingOptions = [{value: "Strongly agree"}, {value: "Agree" }, { value: "Neutral"}, { value: "Disagree"}, { value: "Strongly disagree"}];
 	 $scope.MCQs = [ { index: 1, ques: "The website is easy to navigate", ans:0, MCQoptions:[{value:5}, {value:4}, {value:3}, {value:2},{value:1}]}, 
