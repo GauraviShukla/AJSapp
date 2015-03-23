@@ -1,11 +1,13 @@
-.headerRow{
+.headerRow {
 	text-align: center;
 	width: 150px;
 }
-.radioBtnColumn{
+
+.radioBtnColumn {
 	width: 100%;
 	margin: auto;
 }
+
 #popup {
 	border: 2px solid #ddd;
 	border-radius: 6px;
@@ -15,6 +17,8 @@
 	max-width: 500px;
 	position: relative;
 	top: 250px;
+	z-index: 1;
+	background-color: white;
 }
 
 .popupWrapper {
@@ -27,9 +31,9 @@
 }
 
 .cancelButton {
-  position: absolute;
-  top: -11px;
-  right: -11px;
+	position: absolute;
+	top: -11px;
+	right: -11px;
 }
 
 .cancelButton>span {
