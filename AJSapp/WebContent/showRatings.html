@@ -8,7 +8,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="x in feedback">
+				<tr ng-repeat="x in feedback | limitTo: 5">
 					<td >{{x.key}}</td>
 					<td id="{{x.key}}"  >
 <!--   			 	    <td id="{{x.key}}"  ng-repeat="y in ((a = Array(x.value))&&a) track by $index"> -->
@@ -20,8 +20,10 @@
 				</tr>
 			</tbody>
 		</table>
-<!-- 		{{appendStars()}} -->
-		<h1>{{overallrating()}}</h1>
+		<rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+		<h1 ng-repeat="x in feedback | filter: 'Overall'" >
+			{{x.value}}
+		</h1>
 		<h3>
 			<a id="loginLink" onclick="openLoginPopup()">Login</a> to submit you
 			feedback

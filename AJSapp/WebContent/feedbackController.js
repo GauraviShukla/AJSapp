@@ -10,16 +10,31 @@
 				 tdArray.push(tdArrayObj);
 			 }
 			 $scope.feedback = response;
-			 
-			 $scope.overallrating = function(){
-				 var sum = 0;
-				 for( var i=0; i< $scope.feedback.length; i++){
-					 sum = sum + parseInt($scope.feedback[i].value);
-				 }
-				 return sum/($scope.feedback.length) ;
-			 }
+			  
+			  $scope.rate = 7;
+			  $scope.max = 10;
+			  $scope.isReadonly = false;
+
+			  $scope.hoveringOver = function(value) {
+			    $scope.overStar = value;
+			    $scope.percent = 100 * (value / $scope.max);
+			  };
+
+			  $scope.ratingStates = [
+			    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+			    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+			    {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+			    {stateOn: 'glyphicon-heart'},
+			    {stateOff: 'glyphicon-off'}
+			  ];
+//			 $scope.overallrating = function(){
+//				 var sum = 0;
+//				 for( var i=0; i< $scope.feedback.length; i++){
+//					 sum = sum + parseInt($scope.feedback[i].value);
+//				 }
+//				 return sum/($scope.feedback.length) ;
+//			 }
 	 });
-	 $scope.rate =7;
 	 $scope.ratingOptions = [{value: "Strongly agree"}, {value: "Agree" }, { value: "Neutral"}, { value: "Disagree"}, { value: "Strongly disagree"}];
 	 $scope.MCQs = [ { index: 1, ques: "The website is easy to navigate", ans:0, MCQoptions:[{value:5}, {value:4}, {value:3}, {value:2},{value:1}]}, 
 	                 { index: 2, ques: "Content are displayed properly across the website", ans:0, MCQoptions:[{value:5}, {value:4}, {value:3}, {value:2},{value:1}]}, 
@@ -52,8 +67,7 @@
 			 counter++;
 		 }
 		 $scope.submitValue = sum/counter;
-		 
-	 }
+	 	}
 
  });
  
