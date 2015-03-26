@@ -19,10 +19,10 @@
 			</tbody>
 		</table>
 		 
-		<h1 ng-repeat="x in feedback | filter: 'Overall'" >
+		<h1 class="overallRating" ng-repeat="x in feedback | filter: 'Overall'" >
 		Overall Rating:  <rating ng-model="x.value"  ng-max="max" readonly ="true"  ></rating>
 		</h1>
-		<h3>
+		<h3 >
 			<a id="loginLink" onclick="openLoginPopup()">Login</a> to submit you
 			feedback
 		</h3>

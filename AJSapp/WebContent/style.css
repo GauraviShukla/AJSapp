@@ -8,6 +8,10 @@
 	margin: auto;
 }
 
+.overallRating{
+color: cadetblue!important;
+}
+
 #popup {
 	border: 2px solid #ddd;
 	border-radius: 6px;

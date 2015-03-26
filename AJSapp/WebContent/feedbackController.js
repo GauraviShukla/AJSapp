@@ -10,26 +10,45 @@
 				 tdArray.push(tdArrayObj);
 			 }
 			 $scope.feedback = response;
-			  
-			  $scope.max = 5;
-			  $scope.isReadonly = false;
+			 $scope.max = 5;
 
-
-			  $scope.ratingStates = [
-			    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
-			    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
-			    {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
-			    {stateOn: 'glyphicon-heart'},
-			    {stateOff: 'glyphicon-off'}
-			  ];
-			 $scope.overallrating = function(){
-				 var sum = 0;
-				 for( var i=0; i< $scope.feedback.length; i++){
-					 sum = sum + parseInt($scope.feedback[i].value);
-				 }
-				 return sum/($scope.feedback.length) ;
-			 }
 	 });
+	 
+	 $scope.closeAlert = function(){
+		 $scope.alert.showAlert = false;
+	 }
+	 
+	 $scope.login = function(){
+		 var userName = document.getElementById("user").value;
+		 var pass = document.getElementById("pass").value;
+		 var req = {
+				 url: "http://localhost:8080/RunServlets/Login?user="+userName+"&pass="+pass,
+				 type :"GET",
+				}
+		 
+		 $http(req)
+			 .success( function(data){
+				 if(data == "Successful"){
+					 $scope.alert = { showAlert: true, type: 'success', msg: 'Login success.' };
+					 setTimeout(function(){
+						 var popupDiv = document.getElementById("popupWrapper");
+					     popupDiv.style.display = "none";
+						 var newDiv = document.getElementById("giveFeedback");
+						 newDiv.style.display = "block";
+					     var div = document.getElementById("showRating");
+						 div.style.display = "none";
+					 },2000);
+				 } else if(data == "Failed"){
+					 $scope.alert = { showAlert: true, type: 'danger', msg: 'login Failed.' };
+				 }
+				 
+			 })
+			 .error( function(data){
+				 $scope.alert = { showAlert: true, type: 'danger', msg: 'error Failed.' };
+			 });
+	 }
+	 
+	 
 	 $scope.ratingOptions = [{value: "Strongly agree"}, {value: "Agree" }, { value: "Neutral"}, { value: "Disagree"}, { value: "Strongly disagree"}];
 	 $scope.MCQs = [ { index: 1, ques: "The website is easy to navigate", ans:0, MCQoptions:[{value:5}, {value:4}, {value:3}, {value:2},{value:1}]}, 
 	                 { index: 2, ques: "Content are displayed properly across the website", ans:0, MCQoptions:[{value:5}, {value:4}, {value:3}, {value:2},{value:1}]}, 
